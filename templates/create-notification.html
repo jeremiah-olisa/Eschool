@@ -1,0 +1,34 @@
+{% extends 'blank.html' %}
+{% load static %}
+{% block content  %}
+{% load crispy_forms_tags %}
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fab fa-chart fa-sm text-white-50"></i> Students Rating</a>
+  </div>
+  <!-- Content Row -->
+
+  <div class="row">
+
+    <!-- Content -->
+    <div class="col-xl-8 mx-auto col-lg-7">
+      <div class="card shadow mb-4">
+        <form method="post"  class="m-5" action="{% url 'notification:addNotificationForm' %}">
+          {% csrf_token %}
+          {{ notificationForm | crispy }}
+          <button class="btn btn-block btn-primary" type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+            userInputField = document.getElementById('id_user')
+            userInputField.value = '{{ request.user }}'
+            userInputField.style.display = 'none'
+            document.getElementById('div_id_user').style.display = 'none'
+  </script>
+  <!-- Custom scripts for all pages-->
+{% endblock %}

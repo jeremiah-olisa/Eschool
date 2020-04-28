@@ -1,0 +1,38 @@
+{% extends 'blank.html' %}
+{% load static %}
+{% block content  %}
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fab fa-chart fa-sm text-white-50"></i> Students Rating</a>
+  </div>
+
+  <!-- Content Row -->
+
+  <div class="row">
+
+    <!-- Content -->
+    <div class="col-xl-8 mx-auto col-lg-7">
+      <div class="card shadow mb-4">
+          <div class="card">
+              <div class="card-header">
+                  <strong class="card-title">{{ title.upper }}</strong>
+              </div>
+              <div class="card-body">
+              {%for notificationData in notificationData.all %}
+                  <div class="sufee-alert alert with-close alert-{{ notificationData.priority }} alert-dismissible fade show">
+                      <span class="badge badge-pill badge-{{ notificationData.priority }}">{{ notificationData.get_priority_display }}</span>
+                      {{ notificationData.message }}
+                      
+                  </div>
+              {% endfor %}
+              
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+

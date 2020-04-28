@@ -1,0 +1,112 @@
+{% extends 'blank.html' %}
+{% load static %}
+{% block content  %}
+<div class="col-md-12">
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card shadow mb-4">
+          <!-- Card Header - Accordion -->
+          <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">Registration</h6>
+          </a>
+          <!-- Card Content - Collapse -->
+          <div class="collapse show" id="collapseCardExample1" style="">
+            <div class="card-body">
+              <ul>
+                <li>After Registration</li>
+                <li>Create a Profile by clicking on the alert shown on the index page or the e-School Icon at the top then click the profile link.</li>
+                <li>Click this link to signup <a href="{% url 'account_signup' %}">Register</a> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow mb-4">
+          <!-- Card Header - Accordion -->
+          <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">Notifications</h6>
+          </a>
+          <!-- Card Content - Collapse -->
+          <div class="collapse show" id="collapseCardExample2" style="">
+            <div class="card-body">
+              <ul>
+                <li>After Registration</li>
+                <li>Only The admins can add notifications</li>
+                <li>Once the notifications are due they will disappear </li>
+                <li>Note: always view your notifications everyday</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow mb-4">
+          <!-- Card Header - Accordion -->
+          <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">Using The Forum, Class, And Quiz Sections</h6>
+          </a>
+          <!-- Card Content - Collapse -->
+          <div class="collapse show" id="collapseCardExample" style="">
+            <div class="card-body">
+              <ul>
+                <li>To use the Forum all you need to do is click on the Forum Link and send your message</li>
+                <li>To use the Class Click on the subject you want to offer and then click on a topic of your choice</li>
+                <li>To use the Quiz Section Click on the test link and take any quiz of your choice</li>
+                <li>You can view all your progress on the progress page or your recent six tests on the home page in a graphically</li>
+                <li>The Category: you can take test Base on their category and your own taste</li>
+                <li>Note if your have any issues you can report them by copying the link of the Page Error occurred or Copy the link where the Error Occurred from your browser address bar. 
+                <br>Click on the Report Issues link.
+                <br>Write your full name paste the link in the URL field and describe the error in the description field </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card shadow mb-4">
+          <!-- Card Header - Accordion -->
+          <a href="#collapseCardExample3" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample3">
+            <h6 class="m-0 font-weight-bold text-primary">Features</h6>
+          </a>
+          <!-- Card Content - Collapse -->
+          <div class="collapse show" id="collapseCardExample3" style="">
+            <div class="card-body">
+              <div class="row">            
+                <ul class="col-md-5 mx-auto m-1">
+                  <li><b><u>Quiz</u></b></li>
+                  <li>Question order randomization</li>
+                  <li>Storing of quiz results under each user</li>
+                  <li>Previous quiz scores can be viewed on progress page</li>
+                  <li>Correct answers can be shown after each question or all at once at the end</li>
+                  <li>Logged in users can return to an incomplete quiz to finish it and non-logged in users can complete a quiz if their session persists</li>
+                  <li>Questions can be given a category and subcategory</li>
+                  <li>Success rate for each category can be monitored on a progress page</li>
+                  <li>Explanation for each question result can be given</li>
+                  <li>Objective question type</li>
+                  <li>True/False question type</li>
+                  <li>Theory question type</li>
+                  <li>Display an image alongside the question</li>
+                  <li>A marking page which lists completed quizzes, can be filtered by quiz or user, and is used to mark essay questions</li>
+                  <li>After selecting a larger pool of questions, a quiz can be set to show a random subset rather than all within the pool</li>
+                  <li>Start and end times for sitting exams are recorded</li>
+                </ul>
+                <ul class="col-md-5 mx-auto m-1">
+                  <li><b><u>Others</u></b></li>
+                  <li>Classes on all subjects</li>
+                  <li>Download materials For Classes</li>
+                  <li>Ask Questions on the Forum</li>
+                  <li>And So much more</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+{% endblock %}

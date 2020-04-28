@@ -1,0 +1,182 @@
+{% extends 'blank.html' %}
+{% load static %}
+{% block content  %}
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fab fa-chart fa-sm text-white-50"></i> Students Rating</a>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+
+    {% if request.user.is_authenticated %}
+      <div style="display: {{displayProfileStyle}} " class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card">
+            <div class="card-header">
+                <i class="fa fa-user"></i><strong class="card-title pl-2">{{title.upper}}</strong>
+            </div>
+            <div class="card-body">
+                <div class="mx-auto d-block">
+                    {% if profileData.displayImage_url %}
+                      <img style="height:250px;" class="rounded-circle mx-auto d-block" src="{{ profileData.displayImage_url }}" alt="Profile Image">
+                    {% else %}
+                      <img class="img-profile rounded-circle" src="{% static 'img/favicon.png' %}" alt="">
+                    {% endif %}
+                    <h5 class="text-sm-center mt-2 mb-1">{{profileData.fullName.title}}({{profileData.displayName.title}})</h5>
+                    <div class="location text-sm-center"><i class="fa fa-map-marker"></i> {{profileData.address.title}}, {{profileData.state.title}} {{profileData.country.title}}</div>
+                    <div class="text-sm-center">
+                      <p><strong>Role: </strong>{{profileData.role}}</p>
+                      <p><strong>Department: </strong>{{profileData.department}}</p>
+                      <p><strong>Class: </strong>{{profileData.grade}}</p>
+                      <p><strong>Email: </strong>{{profileData.email}}</p>
+                      <p><strong>Date Of Birth: </strong>{{profileData.dob}}</p>
+                      <p><strong>Phone Number: </strong>{{profileData.phone}}</p>
+                      <p><strong>Disability: </strong>{{profileData.disability}}</p>
+                      <u><p><strong>Profile</strong></p></u>
+                      <p>{{profileData.profile}}</p>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="card-text text-sm-center">
+                    <a href="#"><i class="fa fa-facebook pr-1"></i></a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display: {{displayFormStyle}}" class="col-12">
+        <div class="card">
+          <div id="ProfileDetailForm">
+            <form method="POST" name="ProfileForm" action="{% url 'core:ProfileFormValidator' %}" enctype="multipart/form-data" >
+             {% csrf_token %}            
+              <div class="card-header">
+                  <strong>Profile</strong> <small> Fill in Your Details</small>
+              </div>
+              <div class="card-body card-block">
+                  <div class="row form-group">
+                    <div class="form-group col-md-3">
+                      <label class=" form-control-label">Role</label>
+                      <div class="input-group">
+                          {{ profileData.role }}
+                      </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class=" form-control-label">Department</label>
+                        <div class="input-group">
+                            {{ profileData.department }}
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class=" form-control-label">Date of Birth</label>
+                        <div class="input-group">
+                            {{ profileData.dob }}
+                        </div>
+                        <small class="form-text text-muted">ex. 99/99/9999</small>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class=" form-control-label">Show Date</label>
+                        <div class="input-group">
+                            {{ profileData.showDOB }}
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <div class="form-group col-md-3">
+                        <label class=" form-control-label">Grade input</label>
+                        <div class="input-group">
+                            {{ profileData.grade }}
+                        </div>
+                        <small class="form-text text-muted">ex. 99/99/9999</small>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class=" form-control-label">FullName</label>
+                        <div class="input-group">
+                            {{ profileData.fullName }}
+                        </div>
+                        <small class="form-text text-muted">ex. John Doe</small>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class=" form-control-label">Phone input</label>
+                        <div class="input-group">
+                            {{ profileData.phone }}
+                        </div>
+                        <small class="form-text text-muted">+234 **** *** ****</small>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label class=" form-control-label">Show Phone To Others</label>
+                        <div class="input-group">
+                            {{ profileData.showPhone }}
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <div class="form-group col-md-4">
+                        <label class=" form-control-label">Address input</label>
+                        <div class="input-group">
+                            {{ profileData.address }}
+                        </div>
+                        <small class="form-text text-muted">ex. 19, Mushin street, Mushin</small>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class=" form-control-label">State input</label>
+                        <div class="input-group">
+                            {{ profileData.state }}
+                        </div>
+                        <small class="form-text text-muted">ex. Lagos</small>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class=" form-control-label">Country input</label>
+                        <div class="input-group">
+                            {{ profileData.country }}
+                        </div>
+                        <small class="form-text text-muted">ex. Nigeria</small>
+                    </div>
+                  </div>
+                  
+                  <div class="row form-group">
+                    <div class="form-group col-md-4">
+                        <label class=" form-control-label">Upload Display Image</label>
+                        <div class="input-group">
+                            {{ profileData.displayImage }}
+                        </div>
+                        <small class="form-text text-muted">ex. png/jpeg/jpg</small>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class=" form-control-label">Disability</label>
+                        <div class="input-group">
+                            {{ profileData.disability }}
+                        </div>
+                        <small class="form-text text-muted">ex. None/Deaf/Dumb</small>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class=" form-control-label">Email</label>
+                        <div class="input-group">
+                            {{ profileData.email }}
+                        </div>
+                        <small class="form-text text-muted">ex. Johndoe@email.com</small>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class=" form-control-label">Brief Description Of Your Self</label>
+                      <div class="input-group">
+                          {{ profileData.profile }}
+                      </div>
+                      <small class="form-text text-muted">Not more than 50 Words</small>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">Create</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+   </div>
+
+
+{% endblock %}

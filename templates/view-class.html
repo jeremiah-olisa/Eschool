@@ -1,0 +1,33 @@
+{% extends 'blank.html' %}
+{% load static %}
+{% block content  %}
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fab fa-chart fa-sm text-white-50"></i> Students Rating</a>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row"> 
+    <div class="col-md-12">      
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-book"></i>
+          <strong class="card-title">{{ content.topic }}</strong>
+        </div>
+        <div class="card-body">
+          <p><strong>Subject:</strong> {{ content.subject }}</p>
+          <p><strong>Teacher:</strong> {{ content.teacher_name }}</p>
+          <h3 class="mx-auto"><u><center><strong>Content:</strong></center></u></h3>
+          <p>{{ content.content }}</p>
+          {% if content.material %}
+            <a target="_blank" href="{{ content.material.url }}">Download Material</a>
+          {% endif %}
+          
+        </div>
+      </div>
+    </div>  
+  </div>
+
+
+{% endblock %}

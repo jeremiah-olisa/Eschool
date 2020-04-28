@@ -1,0 +1,89 @@
+{% extends 'blank.html' %}
+{% load static %}
+{% block content  %}
+<link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fab fa-chart fa-sm text-white-50"></i> Students Rating</a>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-body">
+        <div class="mx-auto d-block">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">{{ title.title }}</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                          <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 160px;">
+                             #
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 160px;">
+                             Teacher Name
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 115px;">
+                              Subject
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">
+                              Topic
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 50px;">
+                              Date
+                            </th>
+                          </tr>
+                        </thead>
+                        <tfoot>
+                          <tr>
+                            <th rowspan="1" colspan="1">#</th>
+                            <th rowspan="1" colspan="1">Teacher Name</th>
+                            <th rowspan="1" colspan="1">Subject</th>
+                            <th rowspan="1" colspan="1">Topic</th>
+                            <th rowspan="1" colspan="1">Date</th>
+                          </tr>
+                        </tfoot>
+                        <tbody>
+                          {%for content in classes.all %}
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">{{ forloop.counter }}</td>
+                                <td>{{ content.teacher_name.title }}</td>
+                                <td>{{ content.subject.title }}</td>
+                                <td><a href="{% url 'class:index' %}viewClass/{{ content.id }}">{{ content.topic.title }}</a></td>
+                                <td>{{ content.date }}</td>
+                            </tr>
+                          {% empty%}
+                            <tr>
+                                <td colspan='5'>No Available Class Now</td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom scripts for all pages-->
+
+  <!-- Page level plugins -->
+  <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+{% endblock %}
