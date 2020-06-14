@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404, redirect, render_to_response
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import DetailView, ListView, View
 from django.conf import settings
@@ -67,10 +67,11 @@ def search(request):
 		results = Class.objects.filter(qset).distinct()
 	else:
 		results = []
-	return render_to_response(
-								"class.html", 
-								{
-									"classes": results,
-									"title": f"Search {query}".title,
-								}
-							)
+	return render
+	(
+		"class.html", 
+		{
+			"classes": results,
+			"title": f"Search {query}".title,
+		}
+	)

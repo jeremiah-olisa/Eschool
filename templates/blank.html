@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>E-School - {{ title }}</title>
+  <title>DEMO School - {{ title }}</title>
   <link href="{% static 'img/favicon.png' %}" rel="shortcut icon"/>  
   <!-- Custom styles for this template-->
   <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
@@ -258,12 +258,8 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ request.user }}</span>
-                  {% if profileData %}
-                    <img class="img-profile rounded-circle" src="{{ profileData.displayImage_url }}" alt="">
-                  {% else %}
-                    <img class="img-profile rounded-circle" src="{% static 'img/favicon.png' %}" alt="">
-                  {% endif %}
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ request.user }}</span>                  
+                    <img class="img-profile rounded-circle" src="https://randomuser.me/api/portraits/lego/3.jpg" alt="https://randomuser.me/api/portraits/lego/3.jpg">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -308,6 +304,12 @@
             <div class="container-fluid">
               {% if messages %}
                 <div class="">
+                  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    Please Do Not Upload On The Demo Version Of This App 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
                   {% for message in messages %}
                   <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
                     <a href="{% url 'core:profile' %}">{{ message }}</a>

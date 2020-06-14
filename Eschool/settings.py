@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm3=n$v2u*#si5&1v^$8ybqyk_okg_7(=!m!2r6*i$adzvu)4=o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -78,22 +78,22 @@ WSGI_APPLICATION = 'Eschool.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "d6115dnrv5p2v4",
-#         "USER": "oawclquokpivxj",
-#         "PASSWORD": "8089e567e6de51df917ff9f2206f2201b4e903f363963e5cd7e478ab5557a5fe",
-#         "HOST": "ec2-34-193-117-204.compute-1.amazonaws.com",
-#         "PORT": "5432",
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "kqeccbjq",
+        "USER": "kqeccbjq",
+        "PASSWORD": "E6hC8hnq6115PubQ8yktCddLwfMDDSo6",
+        "HOST": "dumbo.db.elephantsql.com",
+        "PORT": "5432",
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
