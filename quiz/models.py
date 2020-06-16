@@ -12,7 +12,10 @@ from django.utils.timezone import now
 from six import python_2_unicode_compatible
 # from django.utils.encoding import python_2_unicode_compatible
 from django.conf import settings
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from cloudinary.models import CloudinaryField
 from model_utils.managers import InheritanceManager
 
 
@@ -567,10 +570,7 @@ class Question(models.Model):
                                      null=True,
                                      on_delete=models.CASCADE)
 
-    figure = models.ImageField(upload_to='uploads/%Y/%m/%d',
-                               blank=True,
-                               null=True,
-                               verbose_name=_("Figure"))
+    figure = CloudinaryField('figure')
 
     content = models.CharField(max_length=1000,
                                blank=False,

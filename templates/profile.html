@@ -18,11 +18,11 @@
                 <i class="fa fa-user"></i><strong class="card-title pl-2">{{title.upper}}</strong>
             </div>
             <div class="card-body">
-                <div class="mx-auto d-block">
+                <div class="">
                     {% if profileData.displayImage_url %}
                       <img style="height:250px;" class="rounded-circle mx-auto d-block" src="{{ profileData.displayImage_url }}" alt="Profile Image">
                     {% else %}
-                      <img class="img-profile rounded-circle" src="{% static 'img/favicon.png' %}" alt="">
+                      <img class="img-profile mx-auto d-block rounded-circle" src="{% static 'img/favicon.png' %}" alt="">
                     {% endif %}
                     <h5 class="text-sm-center mt-2 mb-1">{{profileData.fullName.title}}({{profileData.displayName.title}})</h5>
                     <div class="location text-sm-center"><i class="fa fa-map-marker"></i> {{profileData.address.title}}, {{profileData.state.title}} {{profileData.country.title}}</div>
@@ -139,21 +139,14 @@
                   </div>
                   
                   <div class="row form-group">
-                    <div class="form-group col-md-4">
-                        <label class=" form-control-label">Upload Display Image</label>
-                        <div class="input-group">
-                            {{ profileData.displayImage }}
-                        </div>
-                        <small class="form-text text-muted">ex. png/jpeg/jpg</small>
-                    </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label class=" form-control-label">Disability</label>
                         <div class="input-group">
                             {{ profileData.disability }}
                         </div>
                         <small class="form-text text-muted">ex. None/Deaf/Dumb</small>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label class=" form-control-label">Email</label>
                         <div class="input-group">
                             {{ profileData.email }}

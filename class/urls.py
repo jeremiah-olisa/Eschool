@@ -7,5 +7,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('<slug>/', index),
     path('viewClass/<slug>/', viewClass, name='viewClass'),
-    path(r'search/q', search, name='search'),
+    path(r'search/', search, name='search'),
 ]

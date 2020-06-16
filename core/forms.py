@@ -86,12 +86,6 @@ class ProfileDetailForm(forms.Form):
 								'class' : "form-control",
 						}))	
 
-	displayImage = forms.FileField(max_length = 100,
-								widget = forms.FileInput(attrs = {
-								'class' : "form-control",
-						}))
-
-
 class BugsForm(forms.ModelForm):
     class Meta:
         model = Bug

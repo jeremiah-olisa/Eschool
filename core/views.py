@@ -105,10 +105,6 @@ def profile(request):
 @login_required
 def ProfileFormValidator(request):
     form = ProfileDetailForm(request.POST)
-    displayImage = request.FILES['displayImage']
-    fs = FileSystemStorage()
-    filename = fs.save(displayImage.name, displayImage)
-    uploaded_file_url = fs.url(filename)
     if request.method == 'POST':
         profile = Profile(
             email = form.data['email'],
@@ -127,7 +123,6 @@ def ProfileFormValidator(request):
             profile = form.data['profile'],
             slug = request.user.id,
             displayName = request.user,
-            displayImage_url = uploaded_file_url,
         )
         profile.save()
         success_msg = messages.add_message(request, messages.SUCCESS, f"Profile Set")

@@ -1,5 +1,8 @@
 import os
 import dj_database_url      
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -11,13 +14,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm3=n$v2u*#si5&1v^$8ybqyk_okg_7(=!m!2r6*i$adzvu)4=o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+LOCALENV = False
 
 ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
+cloudinary.config( 
+  cloud_name = "jeremiaholisa", 
+  api_key = "711943466228267", 
+  api_secret = "dzX0GjnrJNiOXLef89McDW5drh8" 
+)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +48,7 @@ INSTALLED_APPS = [
     'multichoice',
     'true_false',
     'essay',
-
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -78,22 +86,24 @@ WSGI_APPLICATION = 'Eschool.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "kqeccbjq",
-        "USER": "kqeccbjq",
-        "PASSWORD": "E6hC8hnq6115PubQ8yktCddLwfMDDSo6",
-        "HOST": "dumbo.db.elephantsql.com",
-        "PORT": "5432",
+if LOCALENV:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "kqeccbjq",
+            "USER": "kqeccbjq",
+            "PASSWORD": "E6hC8hnq6115PubQ8yktCddLwfMDDSo6",
+            "HOST": "dumbo.db.elephantsql.com",
+            "PORT": "5432",
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
