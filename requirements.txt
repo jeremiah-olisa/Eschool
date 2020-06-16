@@ -11,4 +11,4 @@ bokeh==2.0.2
 django-model-utils>=3.1.1
 six
 Pillow>=4.0.0
-
+cloudinary
