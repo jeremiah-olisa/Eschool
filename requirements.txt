@@ -1,4 +1,4 @@
-Django==2.2.9
+Django
 django-allauth==0.41.0
 django-crispy-forms==1.8.1
 pytz==2018.5
